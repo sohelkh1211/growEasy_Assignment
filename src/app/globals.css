@@ -26,6 +26,10 @@ body {
   font-family: "Playfair Display", serif;
 }
 
+.weired {
+  clip-path: path('M 0 100 Q 50 0 100 100 L 100 100 Q 50 200 0 100 Z');
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
