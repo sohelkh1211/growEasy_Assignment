@@ -1,6 +1,7 @@
 import banner from '@/app/assets/bannerbot-logo.webp';
 
 import BannerImageWrapper from './components/BannerImageWrapper'; // We cannot directly use BannerImageComp because we can't wrap it inside redux provider in server side component i.e page.tsx
+
 {/* Note :- To use client-side component {BannerImageComp.tsx} inside server-side component {page.tsx} 
 that requires redux functionality need to be wrapped inside redux <Provider></Provider> in another file {BannerImageWrapper.tsx}
 This wrapped component {BannerImageWrapper.tsx} we can use it inside server-side component {page.tsx}

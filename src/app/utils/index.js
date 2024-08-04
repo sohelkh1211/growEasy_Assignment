@@ -1,7 +1,7 @@
 import business1 from '@/app/assets/business1.png';
 import business2 from '@/app/assets/business2.png';
 import business3 from '@/app/assets/business3.jpg';
-import business4 from '@/app/assets/business4.jpg';
+import business4 from '@/app/assets/business4.png';
 import business5 from '@/app/assets/business5.jpg';
 import business6 from '@/app/assets/business6.jpg';
 

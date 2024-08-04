@@ -1,8 +1,9 @@
 'use client';
-import Image from "next/image"
-import { StaticImageData } from "next/image";
+
+import Image, { StaticImageData } from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { setIsOpen } from "../actions"
+// To display Dialogue Box i.e EditBannerTemplate.tsx, To show metadata of clicked template
+import { setIsOpen, setIndex } from "../actions";
 
 // Define the interface for the image paths (if they are URLs or imported images)
 // When you import images in Next.js using the special import syntax, the imported value is not a simple string URL; instead, it is an object that contains various pieces of metadata about the image. This object is typed as StaticImageData.
@@ -23,22 +24,23 @@ interface Ad {
     template: Template;
 }
 
-// Define the interface for the props passed to the BannerImageComp component
-interface BannerImageCompProps {
-    ads: Ad[];
-}
-
 interface stateType {
-    state: boolean;
+    toggle: boolean;
+    template: number;
+    update_template: Ad[];
 }
 
-const BannerImageComp: React.FC<BannerImageCompProps> = ({ ads }) => {
-    const isOpen = useSelector((state: stateType) => state.state);
+const BannerImageComp: React.FC = () => {
+    // ---- Not Needed ----
+    const isOpen = useSelector((state: stateType) => state.toggle); // To open and close Dialogue Box.
+    const template = useSelector((state: stateType) => state.template); // To capture index of template on which user clicked.
+    // --------------------
+    const new_ads = useSelector((state: stateType) => state.update_template);
     const dispatch = useDispatch();
 
     return (
         <>
-            {ads.map((ad, index) => (
+            {new_ads.map((ad, index) => (
                 <div key={index}
                     style={{
                         backgroundImage: `url(${ad.template.src}), linear-gradient(rgba(0, 0, 0, 0.2), transparent)`,
@@ -46,7 +48,10 @@ const BannerImageComp: React.FC<BannerImageCompProps> = ({ ads }) => {
                         backgroundBlendMode: 'overlay'
                     }}
                     className="flex flex-col w-[300px] h-[300px] overflow-hidden relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" className='w-[7%] h-[7%] mt-4 ml-[270px] cursor-pointer' viewBox="0 0 256 256" onClick={() => dispatch(setIsOpen())}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className='w-[7%] h-[7%] mt-4 ml-[270px] cursor-pointer' viewBox="0 0 256 256" onClick={() => {
+                        dispatch(setIsOpen());
+                        dispatch(setIndex(index));
+                    }}>
                         <g fill="#ffffff" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDashoffset="0" textAnchor="none" style={{ mixBlendMode: 'normal' }} >
                             <g transform="scale(5.33333,5.33333)">
                                 <path d="M38.657,18.536l2.44,-2.44c2.534,-2.534 2.534,-6.658 0,-9.193c-1.227,-1.226 -2.858,-1.9 -4.597,-1.9c-1.739,0 -3.371,0.675 -4.597,1.901l-2.439,2.439zM27.343,11.464l-18.069,18.069c-0.385,0.385 -0.678,0.86 -0.848,1.375l-3.35,10.121c-0.179,0.538 -0.038,1.131 0.363,1.532c0.287,0.286 0.669,0.439 1.061,0.439c0.158,0 0.317,-0.025 0.472,-0.076l10.118,-3.351c0.517,-0.17 0.993,-0.463 1.378,-0.849l18.068,-18.068z"></path>
