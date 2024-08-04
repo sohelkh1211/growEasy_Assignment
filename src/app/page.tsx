@@ -1,61 +1,16 @@
 import banner from '@/app/assets/bannerbot-logo.webp';
-// Templates
-import square1 from '@/app/assets/square1.png';
-import square2 from '@/app/assets/square2.png';
-import square3 from '@/app/assets/square3.png';
-import square4 from '@/app/assets/square4.png';
-import square5 from '@/app/assets/square5.png';
-import square6 from '@/app/assets/square6.png';
-// Images
-import business1 from '@/app/assets/business1.png';
-import business2 from '@/app/assets/business2.png';
-import business3 from '@/app/assets/business3.jpg';
-import business4 from '@/app/assets/business4.jpg';
-import business5 from '@/app/assets/business5.jpg';
-import business6 from '@/app/assets/business6.jpg';
 
-import BannerImageComp from './components/BannerImageComp';
+import BannerImageWrapper from './components/BannerImageWrapper'; // We cannot directly use BannerImageComp because we can't wrap it inside redux provider in server side component i.e page.tsx
+{/* Note :- To use client-side component {BannerImageComp.tsx} inside server-side component {page.tsx} 
+that requires redux functionality need to be wrapped inside redux <Provider></Provider> in another file {BannerImageWrapper.tsx}
+This wrapped component {BannerImageWrapper.tsx} we can use it inside server-side component {page.tsx}
+Means Agar seedhi ungli se ghee na nikle to ungli tedhi karni padhti hai. */}
+// Agar <Provider><BannerImageComp ads={ads} /></Provider> ko directly page.tsx mein import karenge toh error denga client-side component cannot be used inside server-side component.
+// Isiliye apun ko BannerImageComp ko pehle doosre client-component mein Provider ke andar wrap karna honga
+// Fir apun BannerImageWrapper ko use kar sakte server-side component mein.
+import EditBannerWrapper from './components/EditBannerWrapper';
 
 export default function Home() {
-
-  const ads = [{
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    button: "Learn More",
-    images: [business1, business2, business3, business4, business5, business6],
-    template: square1
-  }, {
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    button: "Learn More",
-    images: [business1, business2, business3, business4, business5, business6],
-    template: square2
-  }, {
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    images: [business1, business2, business3, business4, business5, business6],
-    button: "Learn More",
-    template: square3
-  }, {
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    images: [business1, business2, business3, business4, business5, business6],
-    button: "Learn More",
-    template: square4
-  }, {
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    images: [business1, business2, business3, business4, business5, business6],
-    button: "Learn More",
-    template: square5
-  }, {
-    title: "Boost Your Leads",
-    description: "Harness AI for Effective Campaigns",
-    images: [business1, business2, business3, business4, business5, business6],
-    button: "Learn More",
-    template: square6
-  }];
-  // console.log(ads[2].template.src.slice(20,27) === "square3");
 
   return (
     <>
@@ -64,9 +19,15 @@ export default function Home() {
         <h1 className="font-sans text-[32px] font-bol">BannerBot</h1>
         <p className='mt-4 font-sans text-[20px]'>AI Banner Maker</p>
       </section>
+
+      {/* Dialogue Box */}
+      <EditBannerWrapper />
+
+      {/* Banners */}
       <section className='grid grid-cols-2 mx-auto w-fit gap-2 mt-10 mb-10'>
-        <BannerImageComp ads={ads} />
+        <BannerImageWrapper />
       </section>
+      
     </>
   );
 }
