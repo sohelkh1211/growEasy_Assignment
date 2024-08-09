@@ -5,12 +5,12 @@ import React from "react";
 import { Provider } from 'react-redux';
 import store from '../store';
 import BannerImageComp from './BannerImageComp';
-import { ads } from '../utils';
+
 
 const BannerImageWrapper: React.FC = () => {
   return (
     <Provider store={store}>
-      <BannerImageComp ads={ads} />
+      <BannerImageComp />
     </Provider>
   );
 };

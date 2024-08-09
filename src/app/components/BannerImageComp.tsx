@@ -59,20 +59,20 @@ const BannerImageComp: React.FC = () => {
                         </g>
                     </svg>
                     {ad.template.src.slice(20, 27) === "square1" || ad.template.src.slice(20, 27) === "square3" || ad.template.src.slice(20, 27) === "square6" ?
-                        <h1 className={`ml-[8%] ${ad.template.src.slice(20, 27) === "square6" ? 'text-white' : ''} text-[28px] w-[60%] font-bold font-sans leading-7`}>
+                        <h1 className={`ml-[8%] ${ad.template.src.slice(20, 27) === "square6" ? 'text-white' : ''} text-[28px] w-[60%] h-[20%] font-bold font-sans leading-7`}>
                             {ad.title}
                         </h1> :
                         ad.template.src.slice(20, 27) === "square2" || ad.template.src.slice(20, 27) === "square5" ?
-                            <h1 className={`mx-auto -mt-3 text-white text-[28px] w-[60%] text-center font-bold font-sans leading-7`}>
+                            <h1 className={`mx-auto -mt-3 text-white text-[28px] w-[60%] h-[19%] text-center font-bold font-sans leading-7`}>
                                 {ad.title}
                             </h1> :
                             ad.template.src.slice(20, 27) === "square4" ?
-                                <h1 className='ml-[8%] text-white text-[28px] w-[40%] font-bold font-sans leading-7'>
+                                <h1 className='ml-[8%] text-white text-[28px] w-[40%] h-[28%] font-bold font-sans leading-7'>
                                     {ad.title}
                                 </h1> : ""}
 
                     {ad.template.src.slice(20, 27) === "square1" || ad.template.src.slice(20, 27) === "square4" ?
-                        <p className={`ml-[8%] ${ad.template.src.slice(20, 27) === "square1" ? "w-[50%] mt-[2rem]" : "w-[40%] mt-[1rem] text-white"} text-[14px] font-sans leading-4`}>
+                        <p className={`ml-[8%] ${ad.template.src.slice(20, 27) === "square1" ? "w-[50%] h-[11%] mt-[2rem]" : "w-[35%] h-[16%] mt-[1rem] text-white"} z-30 text-[14px] font-sans leading-4`}>
                             {ad.description}
                         </p> :
                         ad.template.src.slice(20, 27) === "square2" || ad.template.src.slice(20, 27) === "square5" ?
@@ -89,10 +89,10 @@ const BannerImageComp: React.FC = () => {
                             {ad.button}
                         </button> :
                         ad.template.src.slice(20, 27) === "square2" ?
-                            <button className='text-left mt-32 pl-2 ml-[14%] w-fit text-[14px] font-bold cursor-auto'>
+                            <button className='absolute text-left mt-[15.7rem] pl-2 ml-[14%] w-fit text-[14px] font-bold cursor-auto'>
                                 {ad.button}
                             </button> :
-                            <button className='text-left w-fit ml-[8%] mt-[89px] font-bold cursor-auto'>
+                            <button className='absolute text-left w-fit ml-[8%] mt-[15.4rem] font-bold cursor-auto'>
                                 {ad.button}
                             </button>}
 

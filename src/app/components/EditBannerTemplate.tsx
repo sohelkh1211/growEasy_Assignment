@@ -48,12 +48,13 @@ const EditBannerTemplate = () => {
         setAds2(new_ads.map((ad,i) => i === template ? { ...ad, [key]: value} : ad))
     }
 
+
     useEffect(() => {
         dispatch(setAds(ads2));
     }, [ads2]);
     
     return (
-        <div className={`${isOpen ? 'absolute' : 'hidden'} flex flex-col w-[30%] ml-[35%] z-10 p-4 mt-10 bg-white rounded-tl-lg `}>
+        <div className={`${isOpen ? 'absolute' : 'hidden'} flex flex-col w-[30%] ml-[35%] z-40 p-4 mt-10 bg-white rounded-tl-lg `}>
 
             {/* Edit Banner div */}
             <div className='flex flex-row justify-between w-full'>
@@ -76,7 +77,7 @@ const EditBannerTemplate = () => {
 
             {/* Description */}
             <label className='text-slate-500 mt-4 text-[15px]'>Description</label>
-            <input type='text' placeholder='Enter Description' pattern='.{0, 50}' maxLength={50} value={new_ads[template].description} onChange={handleChange("description")} className='outline-none font-[300] caret-slate-500 mt-2 px-2 py-1 border' />
+            <input type='text' placeholder='Enter Description' pattern='.{0, 100}' maxLength={100} value={new_ads[template].description} onChange={handleChange("description")} className='outline-none font-[300] caret-slate-500 mt-2 px-2 py-1 border' />
 
             {/* Button Text */}
             <label className='text-slate-500 mt-4 text-[15px]'>Button Text</label>
